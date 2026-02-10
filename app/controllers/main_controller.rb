@@ -1,6 +1,7 @@
 class MainController  < ApplicationController
     def index
-        flash[:notice] = "Welcome to the main page!"
-        flash[:alert] = "This is an alert message."
+        if session[:user_id]
+             @user = User.find_by(id: session[:user_id]) #find throws when not found , find_by doesn't throw
+        end
     end
 end
