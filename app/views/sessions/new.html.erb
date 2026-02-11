@@ -7,7 +7,10 @@
   <div class="mb-3">
     <%= form.label :password , class: "form-label" %>
     <%= form.password_field :password, placeholder: "Enter your password", class: "form-control" %>
+    <%= link_to "Forgot Password?" ,   password_reset_path , class: "link-primary" %>
+
   </div>
+
   <div class="mb-3">
     <%= form.submit "Login", class: "btn btn-primary" %>
   </div>
