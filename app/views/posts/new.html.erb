@@ -1,0 +1,26 @@
+<h1>Schedule a New Post</h1>
+
+<%= form_with model: @post, method: :post do |form| %>
+    <div class = "d-flex flex-column gap-2 mb-3">
+        <%= form.label :Mastodon_account_id , class: "form-label " %>
+        <%= form.collection_select :mastodon_account_id, Current.user.mastodon_accounts, :id, :username, prompt: "Select a Mastodon Account", class: "form-control form-select" %>
+        <%= link_to "Connect your Mastodon Account" , "/auth/mastodon"  %>
+    </div>
+   
+    <div class = "mb-3">
+        <%= form.label :body, class: "form-label" %>
+        <%= form.text_area :body, 
+        placeholder: "What's on your mind?", 
+        rows: 5, 
+        class: "form-control" %>
+    </div>
+
+     <div class = "mb-3">
+        <%= form.label :publish_at , class: "form-label" %>
+        <%= form.datetime_select :publish_at, class: "form-control" %>
+
+    </div>
+    <div class = "mb-3"> 
+        <%= form.submit "Schedule Post" , class: "btn btn-primary" %>
+    </div>
+<%end%>

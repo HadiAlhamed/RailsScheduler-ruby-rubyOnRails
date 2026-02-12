@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get "/auth/failure", to: redirect("/") # consider deleting it
 
   resources :mastodon_accounts
-
+  resources :posts
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
