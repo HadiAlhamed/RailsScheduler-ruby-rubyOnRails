@@ -2,8 +2,8 @@ class OmniauthCallbacksController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [ :auth ]
 
   def mastodon
-    auth = request.env["omniauth.auth"]
-    token = auth.credentials.token
+    token = auth.credentials.token # we need this to allow the user to make api calls to mastodon
+    #                               from our app.
     mastodon_domain = "mastodon.social"
 
     # API call to get full user info
