@@ -1,0 +1,26 @@
+<%= form_with model: post do |form| %>
+    <%= render partial: "shared/form_errors", locals: { form: form } %>
+    <div class = "d-flex flex-column gap-2 mb-3">
+        <%= form.label :Mastodon_account_id , class: "form-label " %>
+        <%= form.collection_select :mastodon_account_id, Current.user.mastodon_accounts, :id, :username_with_at, prompt: "Select a Mastodon Account", class: "form-control form-select" %>
+        <%= link_to "Connect your Mastodon Account" , "/auth/mastodon"  %>
+    </div>
+   
+    <div class = "mb-3">
+        <%= form.label :body, class: "form-label" %>
+        <%= form.text_area :body, 
+        placeholder: "What's on your mind?", 
+        rows: 5, 
+        class: "form-control" %>
+    </div>
+
+     <div class = "mb-3">
+        <%= form.label :publish_at , class: "form-label" %>
+        <%= form.datetime_select :publish_at, class: "form-control" %>
+
+    </div>
+    <%= form.submit "Schedule Post" , class: "btn btn-primary" %>
+    <% if form.object.persisted? %>
+        <%= link_to "Delete Post", form.object, data: {turbo_confirm: 'Are you sure?', "turbo-method": :delete}, class:"btn btn-outline-danger" %>
+    <%end%>
+<%end%>

@@ -7,6 +7,7 @@
             <%= link_to "View Post" , "https://mastodon.social/@#{post.mastodon_account.username}/#{post.post_id}" , target: :_blank %>
         <% else %>
             Scheduled for <%= l post.publish_at , format: :long %>
+            <%= link_to "Edit Post" , edit_post_path(post) %>
         <%end%>
     </div>
 </div>
