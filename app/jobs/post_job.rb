@@ -1,7 +1,9 @@
 class PostJob < ApplicationJob
   queue_as :default
 
-  def perform(post)
+  def perform(post_id)
+    post = Post.find_by(id: post_id)
+    return unless post # exit quietly if post was deleted
     return if post.published? # this handles if we changed the time to earlier date
 
     # suppose we have changed the time of publish_at,
