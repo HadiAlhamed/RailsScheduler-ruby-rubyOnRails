@@ -8,6 +8,12 @@ class Post < ApplicationRecord
     self.publish_at ||= 24.hours.from_now
   end
 
+  after_save_commit do
+    if publish_at_previously_changed?
+      PostJob.set(wait_until: publish_at).perform_later(self)
+    end
+  end
+
   def published?
     post_id?
   end
