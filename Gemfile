@@ -69,3 +69,4 @@ end
 # gem "mastodon-api", require: "mastodon"
 gem "omniauth"
 gem "omniauth-oauth2"
+gem "mastodon-api", require: "mastodon"

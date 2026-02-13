@@ -11,4 +11,8 @@ class Post < ApplicationRecord
   def published?
     post_id?
   end
+  def publish_to_mastodon!
+      published_status = mastodon_account.client.create_status(body)
+      update(post_id: published_status.id)
+  end
 end

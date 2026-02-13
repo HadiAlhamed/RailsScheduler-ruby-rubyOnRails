@@ -6,4 +6,12 @@ class MastodonAccount < ApplicationRecord
   def username_with_at
     "@#{username}"
   end
+
+  def client
+    require "mastodon"
+    Mastodon::REST::Client.new(
+      base_url: "https://mastodon.social",
+      bearer_token: token
+    )
+  end
 end
