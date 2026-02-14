@@ -7,7 +7,7 @@
 
 
 <% if Current.user.mastodon_accounts.none? %>
-        <%= link_to "Connect your Mastodon Account" , "/auth/mastodon" , class: "btn  btn-primary" %>
+        <%= button_to "Connect your Mastodon Account" , "/auth/mastodon" , data: {turbo: false} ,  method: :post , class: "btn  btn-primary" %>
 <%end%>
 
 <%= render @posts %>

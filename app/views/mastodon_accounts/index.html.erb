@@ -1,6 +1,6 @@
 <div class = "d-flex align-items-center justify-content-between">
 <h1>Mastodon Accounts</h1>
-<%= link_to "Connect A Mastodon Account" ,  "/auth/mastodon" , method: :post , class: "btn btn-primary" %>
+<%= button_to "Connect Mastodon", "/auth/mastodon", data: { turbo: false } , method: :post, class: "btn btn-primary" %>
 </div>
 <% @mastodon_accounts.each do |account| %>
     <div class = "d-flex align-items-center mb-4">
